@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavHot - Sexy Shop & Tattoo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sav-red': '#FF0000',
+                        'sav-yellow': '#FFD700',
+                        'sav-black': '#0F0F0F',
+                        'sav-dark': '#1A1A1A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .flame-bg {
+            background: linear-gradient(to bottom, #0F0F0F 0%, #1A1A1A 50%, #0F0F0F 100%);
+        }
+        .flame-text {
+            background: linear-gradient(to right, #FF0000, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+        }
+        .flame-border {
+            border: 2px solid;
+            border-image: linear-gradient(to right, #FF0000, #FFD700) 1;
+        }
+        .flame-button {
+            background: linear-gradient(to right, #FF0000, #FFD700);
+            transition: all 0.3s ease;
+        }
+        .flame-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        .tattoo-bg {
+            background: url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .tattoo-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 15, 0.85);
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        @media (max-width: 768px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-100 bg-sav-black">
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-sav-red to-sav-yellow text-sav-black text-sm py-2 px-4 flex justify-between items-center">
+        <div class="flex space-x-4">
+            <span><i class="fas fa-phone-alt mr-1"></i> xxxx - xxxx </span>
+            <span><i class="fas fa-envelope mr-1"></i> contato@savhot.com</span>
+        </div>
+        <div class="flex space-x-4">
+            <a href="#" class="hover:text-sav-black"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-sav-black"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-sav-black"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="flame-bg shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-3xl font-bold flame-text flex items-center">
+                    <img src="logo.png" alt="logo" width="80px" height="50px"> SavHot
+                </a>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <nav>
+                    <ul class="flex space-x-8">
+                        <li class="dropdown relative group">
+                            <a href="#" class="hover:text-sav-yellow font-medium flex items-center">
+                                Sexy Shop <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <div class="dropdown-menu absolute hidden group-hover:block bg-sav-dark shadow-lg rounded-md mt-2 py-2 w-48 flame-border">
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Lingerie</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Cosméticos</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Brinquedos</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Acessórios</a>
+                            </div>
+                        </li>
+                        <li class="dropdown relative group">
+                            <a href="#" class="hover:text-sav-yellow font-medium flex items-center">
+                                Tattoo <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <div class="dropdown-menu absolute hidden group-hover:block bg-sav-dark shadow-lg rounded-md mt-2 py-2 w-48 flame-border">
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Agendamento</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Galeria</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Cuidados</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-sav-red hover:text-white">Artistas</a>
+                            </div>
+                        </li>
+                        <li><a href="#" class="hover:text-sav-yellow font-medium">Novidades</a></li>
+                        <li><a href="#" class="hover:text-sav-yellow font-medium">Ofertas</a></li>
+                        <li><a href="#" class="hover:text-sav-yellow font-medium">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="p-2 hover:text-sav-yellow"><i class="fas fa-search"></i></a>
+                <a href="#" class="p-2 hover:text-sav-yellow"><i class="fas fa-user"></i></a>
+                <a href="#" class="p-2 hover:text-sav-yellow relative">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="absolute -top-1 -right-1 bg-sav-yellow text-sav-black text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </a>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl hover:text-sav-yellow"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-sav-dark shadow-lg" id="mobile-menu">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#" class="block px-2 py-2 hover:bg-sav-red hover:text-white rounded">Sexy Shop</a>
+                <a href="#" class="block px-2 py-2 hover:bg-sav-red hover:text-white rounded">Tattoo</a>
+                <a href="#" class="block px-2 py-2 hover:bg-sav-red hover:text-white rounded">Novidades</a>
+                <a href="#" class="block px-2 py-2 hover:bg-sav-red hover:text-white rounded">Ofertas</a>
+                <a href="#" class="block px-2 py-2 hover:bg-sav-red hover:text-white rounded">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+       <div class="bg-[url('img/cama.jpg')] bg-cover bg-center w-full h-full"></div>
+
+
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 flame-text">Liberte sua chama interior</h1>
+            <p class="text-xl md:text-2xl mb-8">Sexy Shop premium e estúdio de tatuagem artístico</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="flame-button text-sav-black font-bold py-3 px-8 rounded-full text-lg">
+                    <i class="fas fa-fire mr-2"></i> Sexy Shop
+                </a>
+                <a href="#" class="bg-sav-dark hover:bg-sav-red text-white font-bold py-3 px-8 rounded-full text-lg border border-sav-red transition duration-300">
+                    <i class="fas fa-pen-fancy mr-2"></i> Agendar Tattoo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-sav-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 flame-text">Nossos Serviços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="coeca.webp" alt="Lingerie" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sav-black to-transparent flex items-end p-6">
+                        <h3 class="text-2xl font-bold text-sav-yellow">Peças intimas Premium</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0"></a>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="masturbador.jpg" alt="Brinquedos" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sav-black to-transparent flex items-end p-6">
+                        <h3 class="text-2xl font-bold text-sav-yellow">Brinquedos Eróticos</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0"></a>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="tatoo.jpg" alt="Tatuagem" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sav-black to-transparent flex items-end p-6">
+                        <h3 class="text-2xl font-bold text-sav-yellow">Tatuagem Artística</h3>
+                    </div>
+                    <a href="#" class="absolute inset-0"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sexy Shop Products -->
+    <section class="py-16 bg-sav-black">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold flame-text">Produtos em Destaque</h2>
+                <a href="#" class="text-sav-yellow hover:text-sav-red font-medium">Ver tudo <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-sav-dark rounded-lg overflow-hidden shadow-md transition duration-300 flame-border">
+                    <div class="relative">
+                        <img src="coeca.webp" alt="Conjunto de lingerie" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <button class="bg-sav-dark rounded-full p-2 shadow-md hover:bg-sav-red">
+                                <i class="far fa-heart text-sav-yellow"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-sav-black to-transparent p-4">
+                            <span class="text-sav-yellow text-sm">Novidade</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1 text-white">Conjunto Flame</h3>
+                        <p class="text-gray-400 text-sm mb-3">Sutiã e calcinha de renda vermelha</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-sav-yellow"> 29,90</span>
+                            <button class="flame-button text-sav-black font-bold rounded-full px-4 py-1 text-sm">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-sav-dark rounded-lg overflow-hidden shadow-md transition duration-300 flame-border">
+                    <div class="relative">
+                        <img src="masturbador.jpg" alt="Vibrador" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <button class="bg-sav-dark rounded-full p-2 shadow-md hover:bg-sav-red">
+                                <i class="far fa-heart text-sav-yellow"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1 text-white">Vibrador Hot</h3>
+                        <p class="text-gray-400 text-sm mb-3">10 modos de vibração</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-sav-yellow">49,90</span>
+                            <button class="flame-button text-sav-black font-bold rounded-full px-4 py-1 text-sm">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-sav-dark rounded-lg overflow-hidden shadow-md transition duration-300 flame-border">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590845947676-fa2576f2d8a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Óleo massageador" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <button class="bg-sav-dark rounded-full p-2 shadow-md hover:bg-sav-red">
+                                <i class="far fa-heart text-sav-yellow"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-sav-black to-transparent p-4">
+                            <span class="text-sav-yellow text-sm">Mais vendido</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1 text-white">Óleo Sensual</h3>
+                        <p class="text-gray-400 text-sm mb-3">Aquecedor e massageador</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-sav-yellow"> 39,90</span>
+                            <button class="flame-button text-sav-black font-bold rounded-full px-4 py-1 text-sm">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-sav-dark rounded-lg overflow-hidden shadow-md transition duration-300 flame-border">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Acessórios" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2">
+                            <button class="bg-sav-dark rounded-full p-2 shadow-md hover:bg-sav-red">
+                                <i class="far fa-heart text-sav-yellow"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1 text-white">Kit Fogo</h3>
+                        <p class="text-gray-400 text-sm mb-3">Máscara e algemas combinando</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-sav-yellow">R$ 159,90</span>
+                            <button class="flame-button text-sav-black font-bold rounded-full px-4 py-1 text-sm">
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tattoo Studio Section -->
+    <section class="tattoo-bg py-16">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold flame-text mb-4">Estúdio de Tatuagem</h2>
+                <p class="text-xl max-w-2xl mx-auto">Arte na pele com os melhores tatuadores da cidade. Agende sua sessão!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-sav-yellow mb-4">Nossos Serviços</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-sav-yellow mr-2 mt-1"></i>
+                            <span class="text-white">Tatuagens personalizadas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-sav-yellow mr-2 mt-1"></i>
+                            <span class="text-white">Cover-up profissional</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-sav-yellow mr-2 mt-1"></i>
+                            <span class="text-white">Piercings e body mods</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-sav-yellow mr-2 mt-1"></i>
+                            <span class="text-white">Tatuagem henna temporária</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-sav-yellow mr-2 mt-1"></i>
+                            <span class="text-white">Consultoria gratuita</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-8">
+                        <a href="#" class="flame-button text-sav-black font-bold py-3 px-8 rounded-full text-lg inline-block">
+                            <i class="fas fa-calendar-alt mr-2"></i> Agendar Sessão
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="tatoo.jpg" alt="Tatuagem" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="tatoo.jpg" alt="Tatuagem" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="tatoo.jpg" alt="Tatuagem" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg">
+                        <img src="tatoo.jpg" alt="Tatuagem" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer -->
+    <section class="py-16 bg-sav-dark">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-sav-black via-sav-dark to-sav-black rounded-xl p-8 md:p-12 flex flex-col md:flex-row items-center flame-border">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-sav-yellow mb-4">Oferta Exclusiva</h2>
+                    <p class="text-white text-lg mb-6">Compre 2 produtos e ganhe 30% de desconto na no terceiro!</p>
+                    <p class="text-gray-400 text-sm mb-6">Válido até 02/06/2025 ou enquanto durarem os estoques</p>
+                    <a href="#" class="flame-button text-sav-black font-bold py-3 px-8 rounded-full text-lg inline-block">
+                        Aproveite Agora
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="coeca.webp" alt="Oferta especial" class="rounded-lg shadow-xl max-h-80">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-sav-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 flame-text">Depoimentos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-sav-dark p-6 rounded-lg shadow-md flame-border">
+                    <div class="flex items-center mb-4">
+                        <div class="text-sav-yellow flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"A lingerie da SavHot é incrível! Qualidade premium e designs que realmente valorizam o corpo. Me sinto poderosa usando!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3 border border-sav-yellow">
+                        <div>
+                            <h4 class="font-medium text-white">Camila</h4>
+                            <p class="text-gray-500 text-sm">Porto</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-sav-dark p-6 rounded-lg shadow-md flame-border">
+                    <div class="flex items-center mb-4">
+                        <div class="text-sav-yellow flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Fiz minha primeira tatuagem no estúdio da SavHot e foi uma experiência incrível! O artista foi super profissional e atencioso."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3 border border-sav-yellow">
+                        <div>
+                            <h4 class="font-medium text-white">Fernanda</h4>
+                            <p class="text-gray-500 text-sm">Lisboa</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-sav-dark p-6 rounded-lg shadow-md flame-border">
+                    <div class="flex items-center mb-4">
+                        <div class="text-sav-yellow flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Compro sempre na SavHot! Atendimento discreto e produtos de qualidade. Meu parceiro adorou o presente que comprei!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3 border border-sav-yellow">
+                        <div>
+                            <h4 class="font-medium text-white">Juliana</h4>
+                            <p class="text-gray-500 text-sm">Aveiro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-sav-dark">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-sav-black rounded-xl p-8 md:p-12 text-center flame-border">
+                <h2 class="text-3xl font-bold mb-4 flame-text">Receba nossas novidades</h2>
+                <p class="text-gray-400 mb-6">Cadastre-se para receber ofertas exclusivas e lançamentos antes de todo mundo</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Seu melhor e-mail" class="flex-grow px-4 py-3 rounded-full border border-gray-700 bg-sav-dark text-white focus:outline-none focus:ring-2 focus:ring-sav-yellow">
+                    <button type="submit" class="flame-button text-sav-black font-bold py-3 px-6 rounded-full">
+                        Cadastrar
+                    </button>
+                </form>
+                <p class="text-gray-500 text-xs mt-4">Não compartilhamos seus dados. Veja nossa <a href="#" class="text-sav-yellow hover:underline">Política de Privacidade</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sav-black text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center flame-text">
+                        <i class="fas fa-fire mr-2"></i> SavHot
+                    </h3>
+                    <p class="text-gray-400 mb-4">Sexy Shop premium e estúdio de tatuagem artístico. Liberte sua chama interior.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-sav-yellow"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-sav-yellow"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-sav-yellow"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-sav-yellow"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-sav-yellow">Sexy Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Lingerie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Cosméticos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Brinquedos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Acessórios</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Novidades</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-sav-yellow">Tattoo Studio</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Agendamento</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Galeria</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Cuidados</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">Artistas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-sav-yellow">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-sav-yellow">Contato</h4>
+                    <ul class="space-y-2">
+                
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400"> xxxx - xxxx </span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">contato@savhot.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">24 Horas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 SavHot. Todos os direitos reservados.</p>
+                <div class="flex space-x-4">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="American Express" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Pix" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="#" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition duration-300 transform hover:scale-110 z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Simple product hover effect
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('form');
+        if(newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if(email) {
+                    alert('Obrigado por se cadastrar! Você receberá nossas novidades em breve.');
+                    this.querySelector('input[type="email"]').value = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
